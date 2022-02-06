@@ -58,10 +58,8 @@ function lost() {
 function winner() {
   if (playerScore == 5) {
     outcome.textContent = "Congratulations you won the game!!";
-    reset();
   } else if (computerScore == 5) {
     outcome.textContent = "You lost, better luck next time";
-    reset();
   }
 }
 
