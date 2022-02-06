@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Document</title>
-    <link rel="icon" href="data:;base64,=">
-</head>
+    <link rel="icon" href="data:;base64,=" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
+  <body>
+    <header>
+      <h1>Rock Paper Scissors</h1>
+    </header>
+
+    <div class="scoreboard">
+      <div id="playerLabel">Player<span id="playerScore">0</span></div>
+      <div id="computerLabel">Computer<span id="computerScore">0</span></div>
+    </div>
+
+    <div class="results">
+      <p id="outcome"></p>
+      <p id="chose"></p>
+    </div>
+
+    <div class="choices">
+      <div class="choice">
+        <img id="rock" src="/images/icons8-hand-rock-skin-type-5-96.png" alt="" />
+      </div>
+      <div class="choice"><img id="paper" src="/images/icons8-hand-96.png" alt="" /></div>
+      <div class="choice">
+        <img id="scissors" src="/images/icons8-hand-scissors-skin-type-5-96.png" alt="" />
+      </div>
+      <div><p>May the odds be ever in your favor.</p></div>
+    </div>
+
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
