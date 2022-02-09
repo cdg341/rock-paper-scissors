@@ -6,6 +6,7 @@ const outcome = document.getElementById("outcome");
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
+const restart = document.getElementById("reset");
 
 function game(playerChoice) {
   const computerChoice = computerPlay();
@@ -66,6 +67,10 @@ function winner() {
 function reset() {
   playerScore = 0;
   computerScore = 0;
+  outcome.textContent = "Who Will Get To 5 Wins First?";
+  chose.textContent = "";
+  playerScore_span.textContent = 0;
+  computerScore_span.textContent = 0;
 }
 
 function computerPlay(pcChoice) {
@@ -84,6 +89,10 @@ function clickEvent() {
 
   scissors.addEventListener("click", () => {
     game("scissors");
+  });
+
+  restart.addEventListener("click", () => {
+    reset();
   });
 }
 
