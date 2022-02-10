@@ -3,6 +3,7 @@ let computerScore = 0;
 const playerScore_span = document.getElementById("playerScore");
 const computerScore_span = document.getElementById("computerScore");
 const outcome = document.getElementById("outcome");
+const chose = document.getElementById("chose");
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
@@ -78,7 +79,7 @@ function computerPlay(pcChoice) {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function clickEvent() {
+function clickEvent(p) {
   rock.addEventListener("click", () => {
     game("rock");
   });
