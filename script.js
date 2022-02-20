@@ -3,11 +3,27 @@ let computerScore = 0;
 const playerScore_span = document.getElementById("playerScore");
 const computerScore_span = document.getElementById("computerScore");
 const outcome = document.getElementById("outcome");
-const chose = document.getElementById("chose");
+const pcChose = document.getElementById("chose");
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const restart = document.getElementById("reset");
+const imgDiv = document.querySelectorAll(".choice");
+
+rock.addEventListener("click", rockChoice);
+paper.addEventListener("click", paperChoice);
+scissors.addEventListener("click", scissorsChoice);
+restart.addEventListener("click", reset);
+
+function rockChoice() {
+  game("rock");
+}
+function scissorsChoice() {
+  game("scissors");
+}
+function paperChoice() {
+  game("paper");
+}
 
 function game(playerChoice) {
   const computerChoice = computerPlay();
@@ -41,10 +57,11 @@ function game(playerChoice) {
     lost();
   }
 
-  chose.textContent = "Computer chose " + computerChoice;
-  chose.style.fontSize = "18px";
+  pcChose.textContent = "Computer chose " + computerChoice;
+  pcChose.style.fontSize = "18px";
 
   winner();
+  disable();
 }
 
 function win() {
@@ -72,6 +89,16 @@ function reset() {
   chose.textContent = "";
   playerScore_span.textContent = 0;
   computerScore_span.textContent = 0;
+  rock.addEventListener("click", rockChoice);
+  paper.addEventListener("click", paperChoice);
+  scissors.addEventListener("click", scissorsChoice);
+  rock.setAttribute("style", "opacity: 100%");
+  paper.setAttribute("style", "opacity: 100%");
+  scissors.setAttribute("style", "opacity: 100%");
+  imgDiv.forEach(function (img) {
+    img.setAttribute("style", "border: 4px solid white; opacity: 100%");
+    img.classList.add("choice-hover");
+  });
 }
 
 function computerPlay(pcChoice) {
@@ -79,22 +106,17 @@ function computerPlay(pcChoice) {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function clickEvent(p) {
-  rock.addEventListener("click", () => {
-    game("rock");
-  });
-
-  paper.addEventListener("click", () => {
-    game("paper");
-  });
-
-  scissors.addEventListener("click", () => {
-    game("scissors");
-  });
-
-  restart.addEventListener("click", () => {
-    reset();
-  });
+function disable() {
+  if (playerScore == 5 || computerScore == 5) {
+    rock.removeEventListener("click", rockChoice);
+    paper.removeEventListener("click", paperChoice);
+    scissors.removeEventListener("click", scissorsChoice);
+    rock.setAttribute("style", "opacity: 60%");
+    paper.setAttribute("style", "opacity: 60%");
+    scissors.setAttribute("style", "opacity: 60%");
+    imgDiv.forEach(function (img) {
+      img.setAttribute("style", "border: 4px solid grey; opacity: 60%");
+      img.classList.remove("choice-hover");
+    });
+  }
 }
-
-clickEvent();
